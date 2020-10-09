@@ -191,6 +191,7 @@ public class Detail {
                         "0." + hours2 + ";" +
                         "0." + minutes + ";" +
                         "0." + second + ";" +
+                        "0." + milisecond + ";" +
                         "0." + firstUp + ";" +
                         "0." + secondUp + ";" +
                         "0." + thirdUp + ";";
@@ -324,6 +325,7 @@ public class Detail {
                         "0." + hours2 + ";" +
                         "0." + minutes + ";" +
                         "0." + second + ";" +
+                        "0." + milisecond + ";" +
                         "0." + firstFirstUp + ";" +
                         "0." + secondFirstUp + ";" +
                         "0." + thirdFirstUp + ";" +
