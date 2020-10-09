@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -65,7 +67,9 @@
             <RadioButton id="ThirdGr_fourth" fx:id="ThirdGr_fourth" layoutX="14.0" layoutY="278.0" mnemonicParsing="false" text="Четвертый пункт улучшения" toggleGroup="$ThirdUp" />
             <RadioButton id="SecondGr_fourth" fx:id="SecondGr_fourth" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" text="Четвертый пункт улучшения" toggleGroup="$SecondUp" />
             <RadioButton id="FirstGr_fourth" fx:id="FirstGr_fourth" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" text="Четвертый пункт улучшения" toggleGroup="$FirstUp" />
-            <Button id="complete" fx:id="complete" layoutX="28.0" layoutY="378.0" mnemonicParsing="false" onAction="#click" prefHeight="29.0" prefWidth="149.0" text="Записать" />
+            <Button id="complete" fx:id="complete" layoutX="28.0" layoutY="378.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="149.0" text="Записать" />
+            <TextField fx:id="focus" layoutX="115.0" layoutY="320.0" prefHeight="25.0" prefWidth="77.0" />
+            <CheckBox fx:id="check" layoutX="28.0" layoutY="324.0" mnemonicParsing="false" text="Готов?" />
          </children>
       </Pane>
    </children>

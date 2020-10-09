@@ -1,6 +1,9 @@
 package entity;
 
+import javafx.scene.image.Image;
+
 import java.io.File;
+import java.net.MalformedURLException;
 import java.util.Date;
 
 public class Detail {
@@ -15,7 +18,11 @@ public class Detail {
     private int hours;
     private int minutes;
     private int second;
-    private File image;
+    private int firstUp;
+    private int secondUp;
+    private int thirdUp;
+
+    private Image image;
 
     public Detail(String name, int type, int rarity, int collInFirstGr, int collInSecondGr, int collInThirdGr, String nameFile) {
         this.name = name;
@@ -24,7 +31,7 @@ public class Detail {
         this.collInFirstGr = collInFirstGr;
         this.collInSecondGr = collInSecondGr;
         this.collInThirdGr = collInThirdGr;
-        String path = "images/"+nameFile + ".png" ;
+        String path = "src/image/" + nameFile + ".png";
         setImage(path);
     }
 
@@ -96,8 +103,45 @@ public class Detail {
         return hours;
     }
 
+    public Image getImage() {
+        return image;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getFirstUp() {
+        return firstUp;
+    }
+
+    public void setFirstUp(int firstUp) {
+        this.firstUp = firstUp;
+    }
+
+    public int getSecondUp() {
+        return secondUp;
+    }
+
+    public void setSecondUp(int secondUp) {
+        this.secondUp = secondUp;
+    }
+
+    public int getThirdUp() {
+        return thirdUp;
+    }
+
+    public void setThirdUp(int thirdUp) {
+        this.thirdUp = thirdUp;
+    }
+
     public void setImage(String path) {
-        image = new File(path);
+        File file = new File(path);
+        try {
+            image = new Image(file.toURI().toURL().toString(), false);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setDate() {
@@ -122,6 +166,9 @@ public class Detail {
                         "0." + day + ";" +
                         "0." + hours + ";" +
                         "0." + minutes + ";" +
-                        "0." + second + ";";
+                        "0." + second + ";" +
+                        "0." + firstUp + ";" +
+                        "0." + secondUp + ";" +
+                        "0." + thirdUp + ";";
     }
 }
