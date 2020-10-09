@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +25,7 @@ public class Controller {
     Detail detail;
     private boolean flag = false;
     private boolean focusFlag = false;
+    private FileWriter writer;
 
     @FXML
     private ResourceBundle resources;
@@ -156,38 +159,38 @@ public class Controller {
         detailList.add(details4);
         cloneListAraay.addAll(detailList);
         complete.setOnAction(event -> {
-            if (focusFlag) {
-                if (detail != null) {
-                    getCodeUp();
-                }
-                if (cloneListAraay.isEmpty()) {
-                    cloneListAraay.addAll(detailList);
-                    flag = true;
-                }
-                Collections.shuffle(cloneListAraay);
-                if (cloneAraay.isEmpty()) {
-                    cloneAraay.addAll(cloneListAraay.get(0));
-                    cloneListAraay.remove(0);
-                    if (flag) {
-                        flag = false;
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Информация");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Новый круг");
-                        alert.showAndWait().ifPresent(rs -> {
-                            if (rs == ButtonType.OK) {
-                                System.out.println("Pressed OK.");
-                            }
-                        });
-                    }
-                }
-                Collections.shuffle(cloneAraay);
-                detail = cloneAraay.get(0);
-                cloneAraay.remove(0);
-                Image.setImage(detail.getImage());
-                focusFlag = false;
-                //ожидание потери фокуса
+            if (detail != null && focusFlag) {
+                getCodeUp();
+                writeToFile();
             }
+            if (cloneListAraay.isEmpty()) {
+                cloneListAraay.addAll(detailList);
+                flag = true;
+            }
+            Collections.shuffle(cloneListAraay);
+            if (cloneAraay.isEmpty()) {
+                cloneAraay.addAll(cloneListAraay.get(0));
+                cloneListAraay.remove(0);
+                if (flag) {
+                    flag = false;
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Информация");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Новый круг");
+                    alert.showAndWait().ifPresent(rs -> {
+                        if (rs == ButtonType.OK) {
+                            System.out.println("Pressed OK.");
+                        }
+                    });
+                }
+            }
+            Collections.shuffle(cloneAraay);
+            detail = cloneAraay.get(0);
+            cloneAraay.remove(0);
+            Image.setImage(detail.getImage());
+            disableGrid();
+            focusFlag = false;
+            //ожидание потери фокуса
         });
         focus.focusedProperty().addListener((obs, oldValue, newValue) -> {
             if (!newValue && check.isSelected()) {/* при потере */
@@ -203,73 +206,167 @@ public class Controller {
 
     private void getCodeUp() {
         RadioButton selectedRadio = (RadioButton) FirstUp.getSelectedToggle();
-        switch (selectedRadio.getId()) {
-            case ("FirstGr_first"): {
-                detail.setFirstUp(1);
-                break;
+        if (selectedRadio != null && selectedRadio.getId() != null) {
+            switch (selectedRadio.getId()) {
+                case ("FirstGr_first"): {
+                    detail.setFirstUp(1);
+                    break;
+                }
+                case ("FirstGr_second"): {
+                    detail.setFirstUp(2);
+                    break;
+                }
+                case ("FirstGr_third"): {
+                    detail.setFirstUp(3);
+                    break;
+                }
+                case ("FirstGr_fourth"): {
+                    detail.setFirstUp(4);
+                    break;
+                }
+                default: {
+                    detail.setFirstUp(0);
+                }
             }
-            case ("FirstGr_second"): {
-                detail.setFirstUp(2);
-                break;
-            }
-            case ("FirstGr_third"): {
-                detail.setFirstUp(3);
-                break;
-            }
-            case ("FirstGr_fourth"): {
-                detail.setFirstUp(4);
-                break;
-            }
-            default: {
-                detail.setFirstUp(0);
-            }
+            selectedRadio.setSelected(false);
+        } else {
+            detail.setFirstUp(0);
         }
         selectedRadio = (RadioButton) SecondUp.getSelectedToggle();
-        switch (selectedRadio.getId()) {
-            case ("SecondGr_first"): {
-                detail.setSecondUp(1);
-                break;
+        if (selectedRadio != null && selectedRadio.getId() != null) {
+            switch (selectedRadio.getId()) {
+                case ("SecondGr_first"): {
+                    detail.setSecondUp(1);
+                    break;
+                }
+                case ("SecondGr_second"): {
+                    detail.setSecondUp(2);
+                    break;
+                }
+                case ("SecondGr_third"): {
+                    detail.setSecondUp(3);
+                    break;
+                }
+                case ("SecondGr_fourth"): {
+                    detail.setSecondUp(4);
+                    break;
+                }
+                default: {
+                    detail.setSecondUp(0);
+                }
             }
-            case ("SecondGr_second"): {
-                detail.setSecondUp(2);
-                break;
-            }
-            case ("SecondGr_third"): {
-                detail.setSecondUp(3);
-                break;
-            }
-            case ("SecondGr_fourth"): {
-                detail.setSecondUp(4);
-                break;
-            }
-            default: {
-                detail.setSecondUp(0);
-            }
+            selectedRadio.setSelected(false);
+        } else {
+            detail.setSecondUp(0);
         }
         selectedRadio = (RadioButton) ThirdUp.getSelectedToggle();
-        switch (selectedRadio.getId()) {
-            case ("ThirdGr_first"): {
-                detail.setSecondUp(1);
-                break;
+        if (selectedRadio != null && selectedRadio.getId() != null) {
+            switch (selectedRadio.getId()) {
+                case ("ThirdGr_first"): {
+                    detail.setThirdUp(1);
+                    break;
+                }
+                case ("ThirdGr_second"): {
+                    detail.setThirdUp(2);
+                    break;
+                }
+                case ("ThirdGr_third"): {
+                    detail.setThirdUp(3);
+                    break;
+                }
+                case ("ThirdGr_fourth"): {
+                    detail.setThirdUp(4);
+                    break;
+                }
+                default: {
+                    detail.setThirdUp(0);
+                }
             }
-            case ("ThirdGr_second"): {
-                detail.setSecondUp(2);
-                break;
+            selectedRadio.setSelected(false);
+        } else {
+            detail.setThirdUp(0);
+        }
+    }
+
+    private void writeToFile() {
+        try {
+            writer = new FileWriter("result.txt", true);
+            writer.write(detail.toString());
+            writer.append('\n');
+            writer.close();
+            if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
+                writer = new FileWriter("result1.txt", true);
+                writer.write(detail.toString());
+                writer.append('\n');
+                writer.close();
             }
-            case ("ThirdGr_third"): {
-                detail.setSecondUp(3);
-                break;
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Информация");
+            alert.setHeaderText(null);
+            alert.setContentText("Ошибка записи");
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+
+    }
+
+    private void disableGrid() {
+        activateAll();
+        if (detail.getCollInFirstGr() < 4) {
+            FirstGr_fourth.setDisable(true);
+            if (detail.getCollInFirstGr() < 3) {
+                FirstGr_third.setDisable(true);
+                if (detail.getCollInFirstGr() < 2) {
+                    FirstGr_second.setDisable(true);
+                    if (detail.getCollInFirstGr() < 1) {
+                        FirstGr_first.setDisable(true);
+                    }
+                }
             }
-            case ("ThirdGr_fourth"): {
-                detail.setSecondUp(4);
-                break;
+        }
+        if (detail.getCollInSecondGr() < 4) {
+            SecondGr_fourth.setDisable(true);
+            if (detail.getCollInSecondGr() < 3) {
+                SecondGr_third.setDisable(true);
+                if (detail.getCollInSecondGr() < 2) {
+                    SecondGr_second.setDisable(true);
+                    if (detail.getCollInSecondGr() < 1) {
+                        SecondGr_first.setDisable(true);
+                    }
+                }
             }
-            default: {
-                detail.setSecondUp(0);
+        }
+        if (detail.getCollInThirdGr() < 4) {
+            ThirdGr_fourth.setDisable(true);
+            if (detail.getCollInThirdGr() < 3) {
+                ThirdGr_third.setDisable(true);
+                if (detail.getCollInThirdGr() < 2) {
+                    ThirdGr_second.setDisable(true);
+                    if (detail.getCollInThirdGr() < 1) {
+                        ThirdGr_first.setDisable(true);
+                    }
+                }
             }
         }
     }
-    private void writeToFile(){
-        
+
+    private void activateAll() {
+        FirstGr_fourth.setDisable(false);
+        FirstGr_third.setDisable(false);
+        FirstGr_second.setDisable(false);
+        FirstGr_first.setDisable(false);
+        SecondGr_fourth.setDisable(false);
+        SecondGr_third.setDisable(false);
+        SecondGr_second.setDisable(false);
+        SecondGr_first.setDisable(false);
+        ThirdGr_fourth.setDisable(false);
+        ThirdGr_third.setDisable(false);
+        ThirdGr_second.setDisable(false);
+        ThirdGr_first.setDisable(false);
     }
+
 }

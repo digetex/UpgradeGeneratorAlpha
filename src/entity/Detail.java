@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Detail {
@@ -16,8 +17,10 @@ public class Detail {
     private int month;
     private int day;
     private int hours;
+    private int hours2;
     private int minutes;
     private int second;
+    private long milisecond;
     private int firstUp;
     private int secondUp;
     private int thirdUp;
@@ -135,6 +138,10 @@ public class Detail {
         this.thirdUp = thirdUp;
     }
 
+    public long getMilisecond() {
+        return milisecond;
+    }
+
     public void setImage(String path) {
         File file = new File(path);
         try {
@@ -145,17 +152,18 @@ public class Detail {
     }
 
     public void setDate() {
-        Date currentDate = new Date();
-        month = currentDate.getMonth();
-        day = currentDate.getDay();
-        hours = currentDate.getDay();
-        minutes = currentDate.getMinutes();
-        second = currentDate.getSeconds();
+        Calendar calendar = Calendar.getInstance();
+        month = calendar.get(Calendar.MONTH) + 1;
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        hours =  calendar.get(Calendar.HOUR_OF_DAY);
+        hours2 = calendar.get(Calendar.HOUR);
+        minutes = calendar.get(Calendar.MINUTE);
+        second = calendar.get(Calendar.SECOND);
+        milisecond = calendar.get(Calendar.MILLISECOND);
     }
 
     @Override
     public String toString() {
-
         return
                 "0." + type + ";" +
                         "0." + rarity + ";" +
@@ -165,6 +173,7 @@ public class Detail {
                         "0." + month + ";" +
                         "0." + day + ";" +
                         "0." + hours + ";" +
+                        "0." + hours2 + ";" +
                         "0." + minutes + ";" +
                         "0." + second + ";" +
                         "0." + firstUp + ";" +
