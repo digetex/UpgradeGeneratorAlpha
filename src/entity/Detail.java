@@ -25,6 +25,21 @@ public class Detail {
     private int secondUp;
     private int thirdUp;
 
+    private int firstFirstUp;
+    private int secondFirstUp;
+    private int thirdFirstUp;
+    private int fourthFirstUp;
+
+    private int firstSecondUp;
+    private int secondSecondUp;
+    private int thirdSecondUp;
+    private int fourthSecondUp;
+
+    private int firstThirdUp;
+    private int secondThirdUp;
+    private int thirdThirdUp;
+    private int fourthThirdUp;
+
     private Image image;
 
     public Detail(String name, int type, int rarity, int collInFirstGr, int collInSecondGr, int collInThirdGr, String nameFile) {
@@ -155,7 +170,7 @@ public class Detail {
         Calendar calendar = Calendar.getInstance();
         month = calendar.get(Calendar.MONTH) + 1;
         day = calendar.get(Calendar.DAY_OF_MONTH);
-        hours =  calendar.get(Calendar.HOUR_OF_DAY);
+        hours = calendar.get(Calendar.HOUR_OF_DAY);
         hours2 = calendar.get(Calendar.HOUR);
         minutes = calendar.get(Calendar.MINUTE);
         second = calendar.get(Calendar.SECOND);
@@ -179,5 +194,147 @@ public class Detail {
                         "0." + firstUp + ";" +
                         "0." + secondUp + ";" +
                         "0." + thirdUp + ";";
+    }
+
+    public String anotherString() {
+        switch (firstUp) {
+            case (0): {
+                firstFirstUp = 0;
+                secondFirstUp = 0;
+                thirdFirstUp = 0;
+                fourthFirstUp = 0;
+                break;
+            }
+            case (1): {
+                firstFirstUp = 100;
+                secondFirstUp = 0;
+                thirdFirstUp = 0;
+                fourthFirstUp = 0;
+                break;
+            }
+            case (2): {
+                firstFirstUp = 0;
+                secondFirstUp = 100;
+                thirdFirstUp = 0;
+                fourthFirstUp = 0;
+                break;
+            }
+            case (3): {
+                firstFirstUp = 0;
+                secondFirstUp = 0;
+                thirdFirstUp = 100;
+                fourthFirstUp = 0;
+                break;
+            }
+            case (4): {
+                firstFirstUp = 0;
+                secondFirstUp = 0;
+                thirdFirstUp = 0;
+                fourthFirstUp = 100;
+                break;
+            }
+        }
+        switch (secondUp) {
+            case (0): {
+                firstSecondUp = 0;
+                secondSecondUp = 0;
+                thirdSecondUp = 0;
+                fourthSecondUp = 0;
+                break;
+            }
+            case (1): {
+                firstSecondUp = 100;
+                secondSecondUp = 0;
+                thirdSecondUp = 0;
+                fourthSecondUp = 0;
+                break;
+            }
+            case (2): {
+                firstSecondUp = 0;
+                secondSecondUp = 100;
+                thirdSecondUp = 0;
+                fourthSecondUp = 0;
+                break;
+            }
+            case (3): {
+                firstSecondUp = 0;
+                secondSecondUp = 0;
+                thirdSecondUp = 100;
+                fourthSecondUp = 0;
+                break;
+            }
+            case (4): {
+                firstSecondUp = 0;
+                secondSecondUp = 0;
+                thirdSecondUp = 0;
+                fourthSecondUp = 100;
+                break;
+            }
+        }
+        switch (thirdUp) {
+            case (0): {
+                firstThirdUp = 0;
+                secondThirdUp = 0;
+                thirdThirdUp = 0;
+                fourthThirdUp = 0;
+                break;
+            }
+            case (1): {
+                firstThirdUp = 100;
+                secondThirdUp = 0;
+                thirdThirdUp = 0;
+                fourthThirdUp = 0;
+                break;
+            }
+
+            case (2): {
+                firstThirdUp = 0;
+                secondThirdUp = 100;
+                thirdThirdUp = 0;
+                fourthThirdUp = 0;
+                break;
+            }
+
+            case (3): {
+                firstThirdUp = 0;
+                secondThirdUp = 0;
+                thirdThirdUp = 100;
+                fourthThirdUp = 0;
+                break;
+            }
+
+            case (4): {
+                firstThirdUp = 0;
+                secondThirdUp = 0;
+                thirdThirdUp = 0;
+                fourthThirdUp = 100;
+                break;
+            }
+
+        }
+        return
+                "0." + type + ";" +
+                        "0." + rarity + ";" +
+                        "0." + collInFirstGr + ";" +
+                        "0." + collInSecondGr + ";" +
+                        "0." + collInThirdGr + ";" +
+                        "0." + month + ";" +
+                        "0." + day + ";" +
+                        "0." + hours + ";" +
+                        "0." + hours2 + ";" +
+                        "0." + minutes + ";" +
+                        "0." + second + ";" +
+                        "0." + firstFirstUp + ";" +
+                        "0." + secondFirstUp + ";" +
+                        "0." + thirdFirstUp + ";" +
+                        "0." + fourthFirstUp + ";" +
+                        "0." + firstSecondUp + ";" +
+                        "0." + secondSecondUp + ";" +
+                        "0." + thirdSecondUp + ";" +
+                        "0." + fourthSecondUp + ";" +
+                        "0." + firstThirdUp + ";" +
+                        "0." + secondThirdUp + ";" +
+                        "0." + thirdThirdUp + ";" +
+                        "0." + fourthThirdUp + ";";
     }
 }

@@ -300,6 +300,16 @@ public class Controller {
                 writer.append('\n');
                 writer.close();
             }
+            writer = new FileWriter("anotherResult.txt", true);
+            writer.write(detail.anotherString());
+            writer.append('\n');
+            writer.close();
+            if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
+                writer = new FileWriter("anotherResult.txt", true);
+                writer.write(detail.anotherString());
+                writer.append('\n');
+                writer.close();
+            }
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Информация");
