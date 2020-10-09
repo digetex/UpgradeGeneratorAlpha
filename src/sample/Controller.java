@@ -112,7 +112,6 @@ public class Controller {
         Detail dalnoboi = new Detail("dalnoboi", 1, 1, 3, 3, 3, "dalnoboi");
         details1.add(dalnoboi);
         Detail goblin = new Detail("goblin", 2, 2, 3, 3, 3, "goblin");
-        details2.add(goblin);
         Detail gonochnoe = new Detail("gonochnoe", 4, 1, 3, 3, 0, "gonochnoe");
         details4.add(gonochnoe);
         Detail grom = new Detail("grom", 2, 3, 3, 3, 3, "grom");
