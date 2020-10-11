@@ -6,6 +6,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class Detail {
     private String name;
@@ -40,9 +41,14 @@ public class Detail {
     private int thirdThirdUp;
     private int fourthThirdUp;
 
+    private List<String> firstUpName;
+    private List<String> secondUpName;
+    private List<String> thirdUpName;
+
     private Image image;
 
-    public Detail(String name, int type, int rarity, int collInFirstGr, int collInSecondGr, int collInThirdGr, String nameFile) {
+    public Detail(String name, int type, int rarity, int collInFirstGr, int collInSecondGr, int collInThirdGr,
+                  String nameFile) {
         this.name = name;
         this.type = type;
         this.rarity = rarity;
@@ -51,6 +57,21 @@ public class Detail {
         this.collInThirdGr = collInThirdGr;
         String path = "src/image/" + nameFile + ".png";
         setImage(path);
+    }
+
+    public Detail(String name, int type, int rarity, int collInFirstGr, int collInSecondGr, int collInThirdGr,
+                  String nameFile, List<String> firstUpName, List<String> secondUpName, List<String> thirdUpName) {
+        this.name = name;
+        this.type = type;
+        this.rarity = rarity;
+        this.collInFirstGr = collInFirstGr;
+        this.collInSecondGr = collInSecondGr;
+        this.collInThirdGr = collInThirdGr;
+        String path = "src/image/" + nameFile + ".png";
+        setImage(path);
+        this.firstUpName = firstUpName;
+        this.secondUpName = secondUpName;
+        this.thirdUpName = thirdUpName;
     }
 
     public String getName() {

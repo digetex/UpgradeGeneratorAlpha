@@ -8,10 +8,7 @@ import javafx.scene.image.ImageView;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller {
 
@@ -92,49 +89,68 @@ public class Controller {
 
     @FXML
     void initialize() {
-        assert FirstGr_first != null : "fx:id=\"FirstGr_first\" was not injected: check your FXML file 'sample.fxml'.";
-        assert FirstUp != null : "fx:id=\"FirstUp\" was not injected: check your FXML file 'sample.fxml'.";
-        assert FirstGr_second != null : "fx:id=\"FirstGr_second\" was not injected: check your FXML file 'sample.fxml'.";
-        assert FirstGr_third != null : "fx:id=\"FirstGr_third\" was not injected: check your FXML file 'sample.fxml'.";
-        assert SecondGr_first != null : "fx:id=\"SecondGr_first\" was not injected: check your FXML file 'sample.fxml'.";
-        assert SecondUp != null : "fx:id=\"SecondUp\" was not injected: check your FXML file 'sample.fxml'.";
-        assert SecondGr_second != null : "fx:id=\"SecondGr_second\" was not injected: check your FXML file 'sample.fxml'.";
-        assert SecondGr_third != null : "fx:id=\"SecondGr_third\" was not injected: check your FXML file 'sample.fxml'.";
-        assert ThirdGr_first != null : "fx:id=\"ThirdGr_first\" was not injected: check your FXML file 'sample.fxml'.";
-        assert ThirdUp != null : "fx:id=\"ThirdUp\" was not injected: check your FXML file 'sample.fxml'.";
-        assert ThirdGr_second != null : "fx:id=\"ThirdGr_second\" was not injected: check your FXML file 'sample.fxml'.";
-        assert ThirdGr_third != null : "fx:id=\"ThirdGr_third\" was not injected: check your FXML file 'sample.fxml'.";
-        assert ThirdGr_fourth != null : "fx:id=\"ThirdGr_fourth\" was not injected: check your FXML file 'sample.fxml'.";
-        assert SecondGr_fourth != null : "fx:id=\"SecondGr_fourth\" was not injected: check your FXML file 'sample.fxml'.";
-        assert FirstGr_fourth != null : "fx:id=\"FirstGr_fourth\" was not injected: check your FXML file 'sample.fxml'.";
-        Detail blokchein = new Detail("blokchein", 2, 3, 3, 2, 3, "blokchein");
+        List<String> firstUp = Arrays.asList("", "", "", "");
+        List<String> secondUp = Arrays.asList("", "", "", "");
+        List<String> thirdUp = Arrays.asList("", "", "", "");
+        List<String> firstUp1 = Arrays.asList("Прочность +10%", "Масса -17%", "Устойчивость ко всему урону +10%", "");
+        List<String> secondUp1 = Arrays.asList("Урон +5%", "Время перезарядки -9", "", "");
+        List<String> thirdUp1 = Arrays.asList("Скорость поворота +10%", "Дальность стрельбы +15%", "Скорость сведения " +
+                "прицела +15%", "");
+        List<String> secondUp2 = Arrays.asList("Урон от самоничтожения +10%", "Радиус взрыва при уничтожении +10%",
+                "Задержка перед самоуничтожением -20%", "");
+        List<String> thirdUp2 = Arrays.asList("Мощность +20%", "ГРузоподьемность кабины +10%", "Предельная масса +10%", "");
+        List<String> secondUp3 = Arrays.asList("Грузоподьемность +10%", "штраф к мощносте меньше на 15%",
+                "Сцепление с поверхностью +25%", "");
+        List<String> secondUp4 = Arrays.asList("Урон +5%", "Время до перегрева +10%", "Скорость охлаждения +10%", "");
+        List<String> thirdUp3 = Arrays.asList("Разброс -17%", "Дальность стрельбы +15%", "Скорость поворота +10%", "");
+        List<String> secondUp5 = Arrays.asList("Урон +5%", "Радиус взрыва +10%", "Время перезарядки -9%", "");
+        List<String> secondUp6 = Arrays.asList("Урон +5%", "Радиус взрыва +10%", "Время до перегрева +10%", "");
+        List<String> thirdUp4 = Arrays.asList("Разброс -17%", "Скорость полета снарда + 25%",
+                "Скорость поворота +10%", "");
+        List<String> thirdUp5 = Arrays.asList("Увеличение разброса при выстреле ниже на 17%", "Отдача -20%",
+                "Скорость поворота +10%", "");
+        List<String> secondUp7 = Arrays.asList("Ускорение +10%", "Время до перегрева +10%", "Скорость охлаждения +10%",
+                "");
+        List<String> secondUp8 = Arrays.asList("Бонус к мощности +10%", "Предельная масса +3%", "Бонус к скорости +10%",
+                "");
+        Detail blokchein = new Detail("blokchein", 2, 3, 3,
+                2, 3, "blokchein", firstUp1, secondUp1, thirdUp1);
         details2.add(blokchein);
-        Detail dalnoboi = new Detail("dalnoboi", 1, 1, 3, 3, 3, "dalnoboi");
+        Detail dalnoboi = new Detail("dalnoboi", 1, 1, 3, 3,
+                3, "dalnoboi", firstUp1, secondUp2, thirdUp2);
         details1.add(dalnoboi);
         Detail goblin = new Detail("goblin", 2, 2, 3, 3, 3, "goblin");
-        Detail gonochnoe = new Detail("gonochnoe", 4, 1, 3, 3, 0, "gonochnoe");
+        Detail gonochnoe = new Detail("gonochnoe", 4, 1, 3,
+                3, 0, "gonochnoe", firstUp1, secondUp3, thirdUp);
         details4.add(gonochnoe);
-        Detail grom = new Detail("grom", 2, 3, 3, 3, 3, "grom");
+        Detail grom = new Detail("grom", 2, 3, 3, 3,
+                3, "grom", firstUp1, secondUp4, thirdUp3);
         details2.add(grom);
-        Detail guslia = new Detail("guslia", 4, 3, 3, 3, 0, "guslia");
+        Detail guslia = new Detail("guslia", 4, 3, 3, 3,
+                0, "guslia", firstUp1, secondUp3, thirdUp);
         details4.add(guslia);
-        Detail guslia1 = new Detail("guslia", 4, 3, 3, 3, 0, "guslia");
+        Detail guslia1 = new Detail("guslia", 4, 3, 3, 3,
+                0, "guslia", firstUp1, secondUp3, thirdUp);
         details4.add(guslia1);
-        Detail kyvalda = new Detail("kyvalda", 2, 1, 3, 3, 3, "kyvalda");
+        Detail kyvalda = new Detail("kyvalda", 2, 1, 3, 3,
+                3, "kyvalda", firstUp1, secondUp4, thirdUp3);
         details2.add(kyvalda);
-        Detail malish = new Detail("malish", 2, 1, 3, 3, 3, "malish");
+        Detail malish = new Detail("malish", 2, 1, 3, 3,
+                3, "malish", firstUp1, secondUp5, thirdUp4);
         details2.add(malish);
-        Detail masiv = new Detail("masiv", 4, 2, 3, 3, 0, "masiv");
+        Detail masiv = new Detail("masiv", 4, 2, 3, 3, 0,
+                "masiv", firstUp1, secondUp3, thirdUp);
         details4.add(masiv);
-        Detail masiv1 = new Detail("masiv", 4, 2, 3, 3, 0, "masiv");
-        details4.add(masiv1);
-        Detail rapira = new Detail("rapira", 2, 1, 3, 3, 3, "rapira");
+        details4.add(masiv);
+        Detail rapira = new Detail("rapira", 2, 1, 3, 3, 3,
+                "rapira", firstUp1,secondUp6,thirdUp5);
         details2.add(rapira);
-        Detail razgon = new Detail("razgon", 3, 1, 3, 3, 0, "razgon");
+        Detail razgon = new Detail("razgon", 3, 1, 3, 3, 0,
+                "razgon",secondUp1,secondUp7,thirdUp);
         details3.add(razgon);
-        Detail razgon1 = new Detail("razgon", 3, 1, 3, 3, 0, "razgon");
-        details3.add(razgon1);
-        Detail savracs = new Detail("savracs", 3, 2, 3, 3, 0, "savracs");
+        details3.add(razgon);
+        Detail savracs = new Detail("savracs", 3, 2, 3, 3, 0,
+                "savracs",firstUp1,secondUp8,thirdUp);
         details3.add(savracs);
         Detail scepiami = new Detail("scepiami", 4, 1, 3, 3, 0, "scepiami");
         details4.add(scepiami);
