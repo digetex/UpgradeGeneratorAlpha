@@ -98,7 +98,7 @@ public class Controller {
                 "прицела +15%", "");
         List<String> secondUp2 = Arrays.asList("Урон от самоничтожения +10%", "Радиус взрыва при уничтожении +10%",
                 "Задержка перед самоуничтожением -20%", "");
-        List<String> thirdUp2 = Arrays.asList("Мощность +20%", "ГРузоподьемность кабины +10%", "Предельная масса +10%", "");
+        List<String> thirdUp2 = Arrays.asList("Мощность +20%", "Грузоподьемность кабины +10%", "Предельная масса +10%", "");
         List<String> secondUp3 = Arrays.asList("Грузоподьемность +10%", "штраф к мощносте меньше на 15%",
                 "Сцепление с поверхностью +25%", "");
         List<String> secondUp4 = Arrays.asList("Урон +5%", "Время до перегрева +10%", "Скорость охлаждения +10%", "");
@@ -113,6 +113,11 @@ public class Controller {
                 "");
         List<String> secondUp8 = Arrays.asList("Бонус к мощности +10%", "Предельная масса +3%", "Бонус к скорости +10%",
                 "");
+        List<String> secondUp9 = Arrays.asList("Урон +5%", "Время до перегрева", "Время до перегрева +10%", "");
+        List<String> thirdUp6 = Arrays.asList("Увеличение разброса при выстреле ниже 17%", "Дальность стрельбы +15%",
+                "Скорость сведения прицела +15%", "");
+        List<String> secondUp10 = Arrays.asList("Радиус обнаружения +15%", "", "", "");
+        List<String> secondUp11 = Arrays.asList("Контактный урон +5%", "Таранный урон +10%", "", "");
         Detail blokchein = new Detail("blokchein", 2, 3, 3,
                 2, 3, "blokchein", firstUp1, secondUp1, thirdUp1);
         details2.add(blokchein);
@@ -143,31 +148,37 @@ public class Controller {
         details4.add(masiv);
         details4.add(masiv);
         Detail rapira = new Detail("rapira", 2, 1, 3, 3, 3,
-                "rapira", firstUp1,secondUp6,thirdUp5);
+                "rapira", firstUp1, secondUp6, thirdUp5);
         details2.add(rapira);
         Detail razgon = new Detail("razgon", 3, 1, 3, 3, 0,
-                "razgon",secondUp1,secondUp7,thirdUp);
+                "razgon", secondUp1, secondUp7, thirdUp);
         details3.add(razgon);
         details3.add(razgon);
         Detail savracs = new Detail("savracs", 3, 2, 3, 3, 0,
-                "savracs",firstUp1,secondUp8,thirdUp);
+                "savracs", firstUp1, secondUp8, thirdUp);
         details3.add(savracs);
-        Detail scepiami = new Detail("scepiami", 4, 1, 3, 3, 0, "scepiami");
+        Detail scepiami = new Detail("scepiami", 4, 1, 3, 3, 0,
+                "scepiami", firstUp1, secondUp3, thirdUp);
         details4.add(scepiami);
-        Detail sinus = new Detail("sinus", 2, 2, 3, 3, 3, "sinus");
+        Detail sinus = new Detail("sinus", 2, 2, 3, 3, 3,
+                "sinus", firstUp1, secondUp9, thirdUp6);
         details2.add(sinus);
-        Detail sluhach = new Detail("sluhach", 3, 1, 3, 1, 0, "sluhach");
+        Detail sluhach = new Detail("sluhach", 3, 1, 3, 1, 0,
+                "sluhach", firstUp1, secondUp10, thirdUp);
         details3.add(sluhach);
-        Detail spectr = new Detail("spectr", 2, 3, 3, 3, 3, "spectr");
+        Detail spectr = new Detail("spectr", 2, 3, 3, 3, 3,
+                "spectr", firstUp1, secondUp4, thirdUp6);
         details2.add(spectr);
-        Detail terzatel = new Detail("terzatel", 2, 3, 3, 2, 0, "terzatel");
+        Detail terzatel = new Detail("terzatel", 2, 3, 3, 2, 0,
+                "terzatel", firstUp1, secondUp11, thirdUp);
         details2.add(terzatel);
-        Detail viverna = new Detail("viverna", 1, 1, 3, 3, 3, "viverna");
+        Detail viverna = new Detail("viverna", 1, 1, 3, 3, 3,
+                "viverna", firstUp1, secondUp2, thirdUp2);
         details1.add(viverna);
-        Detail zatochka = new Detail("zatochka", 4, 2, 3, 3, 0, "zatochka");
+        Detail zatochka = new Detail("zatochka", 4, 2, 3, 3, 0,
+                "zatochka", firstUp1, secondUp3, thirdUp);
         details4.add(zatochka);
-        Detail zatochka1 = new Detail("zatochka", 4, 2, 3, 3, 0, "zatochka");
-        details4.add(zatochka1);
+        details4.add(zatochka);
         detailList.add(details1);
         detailList.add(details2);
         detailList.add(details3);
@@ -377,6 +388,24 @@ public class Controller {
                 }
             }
         }
+        setName();
+    }
+
+    private void setName() {
+        FirstGr_first.setText(detail.getFirstUpName().get(0));
+        FirstGr_second.setText(detail.getFirstUpName().get(1));
+        FirstGr_third.setText(detail.getFirstUpName().get(2));
+        FirstGr_fourth.setText(detail.getFirstUpName().get(3));
+
+        SecondGr_fourth.setText(detail.getSecondUpName().get(3));
+        SecondGr_third.setText(detail.getSecondUpName().get(2));
+        SecondGr_second.setText(detail.getSecondUpName().get(1));
+        SecondGr_first.setText(detail.getSecondUpName().get(0));
+
+        ThirdGr_fourth.setText(detail.getThirdUpName().get(3));
+        ThirdGr_third.setText(detail.getThirdUpName().get(2));
+        ThirdGr_second.setText(detail.getThirdUpName().get(1));
+        ThirdGr_first.setText(detail.getThirdUpName().get(0));
     }
 
     private void activateAll() {

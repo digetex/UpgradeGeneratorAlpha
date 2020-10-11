@@ -178,6 +178,18 @@ public class Detail {
         return milisecond;
     }
 
+    public List<String> getFirstUpName() {
+        return firstUpName;
+    }
+
+    public List<String> getSecondUpName() {
+        return secondUpName;
+    }
+
+    public List<String> getThirdUpName() {
+        return thirdUpName;
+    }
+
     public void setImage(String path) {
         File file = new File(path);
         try {
