@@ -89,17 +89,15 @@ public class Controller {
 
     @FXML
     void initialize() {
-        List<String> firstUp = Arrays.asList("", "", "", "");
-        List<String> secondUp = Arrays.asList("", "", "", "");
         List<String> thirdUp = Arrays.asList("", "", "", "");
         List<String> firstUp1 = Arrays.asList("Прочность +10%", "Масса -17%", "Устойчивость ко всему урону +10%", "");
-        List<String> secondUp1 = Arrays.asList("Урон +5%", "Время перезарядки -9", "", "");
+        List<String> secondUp1 = Arrays.asList("Урон +5%", "Время перезарядки -9%", "", "");
         List<String> thirdUp1 = Arrays.asList("Скорость поворота +10%", "Дальность стрельбы +15%", "Скорость сведения " +
                 "прицела +15%", "");
         List<String> secondUp2 = Arrays.asList("Урон от самоничтожения +10%", "Радиус взрыва при уничтожении +10%",
                 "Задержка перед самоуничтожением -20%", "");
         List<String> thirdUp2 = Arrays.asList("Мощность +20%", "Грузоподьемность кабины +10%", "Предельная масса +10%", "");
-        List<String> secondUp3 = Arrays.asList("Грузоподьемность +10%", "штраф к мощносте меньше на 15%",
+        List<String> secondUp3 = Arrays.asList("Грузоподьемность +5%", "Штраф к мощносте меньше на 15%",
                 "Сцепление с поверхностью +25%", "");
         List<String> secondUp4 = Arrays.asList("Урон +5%", "Время до перегрева +10%", "Скорость охлаждения +10%", "");
         List<String> thirdUp3 = Arrays.asList("Разброс -17%", "Дальность стрельбы +15%", "Скорость поворота +10%", "");
@@ -151,7 +149,7 @@ public class Controller {
                 "rapira", firstUp1, secondUp6, thirdUp5);
         details2.add(rapira);
         Detail razgon = new Detail("razgon", 3, 1, 3, 3, 0,
-                "razgon", secondUp1, secondUp7, thirdUp);
+                "razgon", firstUp1, secondUp7, thirdUp);
         details3.add(razgon);
         details3.add(razgon);
         Detail savracs = new Detail("savracs", 3, 2, 3, 3, 0,
@@ -161,7 +159,7 @@ public class Controller {
                 "scepiami", firstUp1, secondUp3, thirdUp);
         details4.add(scepiami);
         Detail sinus = new Detail("sinus", 2, 2, 3, 3, 3,
-                "sinus", firstUp1, secondUp9, thirdUp6);
+                "sinus", firstUp1, secondUp4, thirdUp6);
         details2.add(sinus);
         Detail sluhach = new Detail("sluhach", 3, 1, 3, 1, 0,
                 "sluhach", firstUp1, secondUp10, thirdUp);
