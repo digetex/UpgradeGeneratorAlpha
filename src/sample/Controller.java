@@ -483,8 +483,8 @@ public class Controller {
                 "bk", firstUp1, Arrays.asList("Урон от взрыва модуля -25%", "Радиус взрыва модуля -25%",
                 "Эфективность модуля +56%", ""), thirdUp, 1, 3, 0);
         details3.add(bk);
-        Detail gonochnoe = new Detail("gonochnoe", 4, 1, 3, 3,
-                0, "gonochnoe", firstUp1, secondUp3, thirdUp, 1, 2, 0);
+        Detail gonochnoe = new Detail("gono4noe", 4, 1, 3, 3,
+                0, "gono4noe", firstUp1, secondUp3, thirdUp, 1, 2, 0);
         details4.add(gonochnoe);
         details4.add(gonochnoe);
         Detail hover = new Detail("hover", 4, 3, 3,
@@ -499,11 +499,9 @@ public class Controller {
                 "ispolin", firstUp1, Arrays.asList("Бонус к мощности +10%", "Предельная масса +3%",
                 "Бонус к скорости +10%", ""), thirdUp, 2, 3, 0);
         details3.add(ispolin);
-        Detail malish = new Detail("malish", 2, 1, 3, 3,
-                3, "malish", firstUp1, secondUp5, thirdUp4, 3, 3, 3);
-        details2.add(malish);
         Detail malish1 = new Detail("malish", 2, 1, 3, 3,
-                3, "malish", firstUp1, secondUp5, thirdUp4, 2, 2, 1);
+                3, "malish", firstUp1, secondUp5, thirdUp4, 2, 3, 1);
+        details2.add(malish1);
         details2.add(malish1);
         details2.add(malish1);
         Detail nepra = new Detail("nepra", 3, 3, 3, 1, 0,
