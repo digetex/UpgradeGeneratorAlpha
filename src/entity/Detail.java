@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Detail {
@@ -47,6 +46,10 @@ public class Detail {
 
     private Image image;
 
+    private Integer numberUp1;
+    private Integer numberUp2;
+    private Integer numberUp3;
+
     public Detail(String name, int type, int rarity, int collInFirstGr, int collInSecondGr, int collInThirdGr,
                   String nameFile) {
         this.name = name;
@@ -68,6 +71,25 @@ public class Detail {
         this.collInSecondGr = collInSecondGr;
         this.collInThirdGr = collInThirdGr;
         String path = "src/image/" + nameFile + ".png";
+        setImage(path);
+        this.firstUpName = firstUpName;
+        this.secondUpName = secondUpName;
+        this.thirdUpName = thirdUpName;
+    }
+
+    public Detail(String name, int type, int rarity, int collInFirstGr, int collInSecondGr, int collInThirdGr,
+                  String nameFile, List<String> firstUpName, List<String> secondUpName, List<String> thirdUpName,
+                  int up1, int up2, int up3) {
+        this.numberUp1 = up1;
+        this.numberUp2 = up2;
+        this.numberUp3 = up3;
+        this.name = name;
+        this.type = type;
+        this.rarity = rarity;
+        this.collInFirstGr = collInFirstGr;
+        this.collInSecondGr = collInSecondGr;
+        this.collInThirdGr = collInThirdGr;
+        String path = "src/imageReap/" + nameFile + ".png";
         setImage(path);
         this.firstUpName = firstUpName;
         this.secondUpName = secondUpName;
@@ -213,24 +235,35 @@ public class Detail {
     @Override
     public String toString() {
         return
-                "0." + type + ";" +
-                        "0." + rarity + ";" +
-                        "0." + collInFirstGr + ";" +
-                        "0." + collInSecondGr + ";" +
-                        "0." + collInThirdGr + ";" +
-                        "0." + month + ";" +
-                        "0." + day + ";" +
-                        "0." + hours + ";" +
-                        "0." + hours2 + ";" +
-                        "0." + minutes + ";" +
-                        "0." + second + ";" +
-                        "0." + milisecond + ";" +
-                        "0." + firstUp + ";" +
-                        "0." + secondUp + ";" +
-                        "0." + thirdUp + ";";
+                "0." + type + "," +
+                        "0." + rarity + "," +
+                        "0." + collInFirstGr + "," +
+                        "0." + collInSecondGr + "," +
+                        "0." + collInThirdGr + "," +
+                        "0." + month + "," +
+                        "0." + day + "," +
+                        "0." + hours + "," +
+                        "0." + hours2 + "," +
+                        "0." + minutes + "," +
+                        "0." + second + ",";
     }
 
-    public String anotherString() {
+    public String reUpToString(){
+        return toString() +
+                "0." + numberUp1 + "," +
+                "0." + numberUp2 + "," +
+                "0." + numberUp3 + "," ;
+    }
+    public String firstToString(int type) {
+        String str = "0." + firstUp + "," +
+                "0." + secondUp + "," +
+                "0." + thirdUp + ",";
+        return
+                type == 0 ?toString() + str:reUpToString() + str;
+
+    }
+
+    public String anotherString(int type) {
         switch (firstUp) {
             case (0): {
                 firstFirstUp = 0;
@@ -346,30 +379,20 @@ public class Detail {
             }
 
         }
+        String str = "0." + firstFirstUp + "," +
+                "0." + secondFirstUp + "," +
+                "0." + thirdFirstUp + "," +
+                "0." + fourthFirstUp + "," +
+                "0." + firstSecondUp + "," +
+                "0." + secondSecondUp + "," +
+                "0." + thirdSecondUp + "," +
+                "0." + fourthSecondUp + "," +
+                "0." + firstThirdUp + "," +
+                "0." + secondThirdUp + "," +
+                "0." + thirdThirdUp + "," +
+                "0." + fourthThirdUp + ",";
         return
-                "0." + type + ";" +
-                        "0." + rarity + ";" +
-                        "0." + collInFirstGr + ";" +
-                        "0." + collInSecondGr + ";" +
-                        "0." + collInThirdGr + ";" +
-                        "0." + month + ";" +
-                        "0." + day + ";" +
-                        "0." + hours + ";" +
-                        "0." + hours2 + ";" +
-                        "0." + minutes + ";" +
-                        "0." + second + ";" +
-                        "0." + milisecond + ";" +
-                        "0." + firstFirstUp + ";" +
-                        "0." + secondFirstUp + ";" +
-                        "0." + thirdFirstUp + ";" +
-                        "0." + fourthFirstUp + ";" +
-                        "0." + firstSecondUp + ";" +
-                        "0." + secondSecondUp + ";" +
-                        "0." + thirdSecondUp + ";" +
-                        "0." + fourthSecondUp + ";" +
-                        "0." + firstThirdUp + ";" +
-                        "0." + secondThirdUp + ";" +
-                        "0." + thirdThirdUp + ";" +
-                        "0." + fourthThirdUp + ";";
+                type == 0 ?toString() +str :reUpToString() + str;
+
     }
 }

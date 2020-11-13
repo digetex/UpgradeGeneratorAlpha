@@ -22,7 +22,9 @@ public class Controller {
     Detail detail;
     private boolean flag = false;
     private boolean focusFlag = false;
+    private boolean isUp = false;
     private FileWriter writer;
+
 
     @FXML
     private ResourceBundle resources;
@@ -79,142 +81,86 @@ public class Controller {
     private RadioButton FirstGr_fourth;
 
     @FXML
-    private TextField focus;
+    private Button complete;
 
     @FXML
-    private Button complete;
+    private TextField focus;
 
     @FXML
     private CheckBox check;
 
     @FXML
+    private RadioButton Up;
+
+    @FXML
+    private ToggleGroup Ups;
+
+    @FXML
+    private RadioButton Reup;
+
+    @FXML
+    private Button cansale;
+
+
+    @FXML
     void initialize() {
-        List<String> thirdUp = Arrays.asList("", "", "", "");
-        List<String> firstUp1 = Arrays.asList("Прочность +10%", "Масса -17%", "Устойчивость ко всему урону +10%", "");
-        List<String> secondUp1 = Arrays.asList("Урон +5%", "Время перезарядки -9%", "", "");
-        List<String> thirdUp1 = Arrays.asList("Скорость поворота +10%", "Дальность стрельбы +15%", "Скорость сведения " +
-                "прицела +15%", "");
-        List<String> secondUp2 = Arrays.asList("Урон от самоничтожения +10%", "Радиус взрыва при уничтожении +10%",
-                "Задержка перед самоуничтожением -20%", "");
-        List<String> thirdUp2 = Arrays.asList("Мощность +20%", "Грузоподьемность кабины +10%", "Предельная масса +10%", "");
-        List<String> secondUp3 = Arrays.asList("Грузоподьемность +5%", "Штраф к мощносте меньше на 15%",
-                "Сцепление с поверхностью +25%", "");
-        List<String> secondUp4 = Arrays.asList("Урон +5%", "Время до перегрева +10%", "Скорость охлаждения +10%", "");
-        List<String> thirdUp3 = Arrays.asList("Разброс -17%", "Дальность стрельбы +15%", "Скорость поворота +10%", "");
-        List<String> secondUp5 = Arrays.asList("Урон +5%", "Радиус взрыва +10%", "Время перезарядки -9%", "");
-        List<String> secondUp6 = Arrays.asList("Урон +5%", "Радиус взрыва +10%", "Время до перегрева +10%", "");
-        List<String> thirdUp4 = Arrays.asList("Разброс -17%", "Скорость полета снарда + 25%",
-                "Скорость поворота +10%", "");
-        List<String> thirdUp5 = Arrays.asList("Увеличение разброса при выстреле ниже на 17%", "Отдача -20%",
-                "Скорость поворота +10%", "");
-        List<String> secondUp7 = Arrays.asList("Ускорение +10%", "Время до перегрева +10%", "Скорость охлаждения +10%",
-                "");
-        List<String> secondUp8 = Arrays.asList("Бонус к мощности +10%", "Предельная масса +3%", "Бонус к скорости +10%",
-                "");
-        List<String> secondUp9 = Arrays.asList("Урон +5%", "Время до перегрева", "Время до перегрева +10%", "");
-        List<String> thirdUp6 = Arrays.asList("Увеличение разброса при выстреле ниже 17%", "Дальность стрельбы +15%",
-                "Скорость сведения прицела +15%", "");
-        List<String> secondUp10 = Arrays.asList("Радиус обнаружения +15%", "", "", "");
-        List<String> secondUp11 = Arrays.asList("Контактный урон +5%", "Таранный урон +10%", "", "");
-        Detail blokchein = new Detail("blokchein", 2, 3, 3,
-                2, 3, "blokchein", firstUp1, secondUp1, thirdUp1);
-        details2.add(blokchein);
-        Detail dalnoboi = new Detail("dalnoboi", 1, 1, 3, 3,
-                3, "dalnoboi", firstUp1, secondUp2, thirdUp2);
-        details1.add(dalnoboi);
-        Detail goblin = new Detail("goblin", 2, 2, 3, 3, 3, "goblin");
-        Detail gonochnoe = new Detail("gonochnoe", 4, 1, 3,
-                3, 0, "gonochnoe", firstUp1, secondUp3, thirdUp);
-        details4.add(gonochnoe);
-        Detail grom = new Detail("grom", 2, 3, 3, 3,
-                3, "grom", firstUp1, secondUp4, thirdUp3);
-        details2.add(grom);
-        Detail guslia = new Detail("guslia", 4, 3, 3, 3,
-                0, "guslia", firstUp1, secondUp3, thirdUp);
-        details4.add(guslia);
-        Detail guslia1 = new Detail("guslia", 4, 3, 3, 3,
-                0, "guslia", firstUp1, secondUp3, thirdUp);
-        details4.add(guslia1);
-        Detail kyvalda = new Detail("kyvalda", 2, 1, 3, 3,
-                3, "kyvalda", firstUp1, secondUp4, thirdUp3);
-        details2.add(kyvalda);
-        Detail malish = new Detail("malish", 2, 1, 3, 3,
-                3, "malish", firstUp1, secondUp5, thirdUp4);
-        details2.add(malish);
-        Detail masiv = new Detail("masiv", 4, 2, 3, 3, 0,
-                "masiv", firstUp1, secondUp3, thirdUp);
-        details4.add(masiv);
-        details4.add(masiv);
-        Detail rapira = new Detail("rapira", 2, 1, 3, 3, 3,
-                "rapira", firstUp1, secondUp6, thirdUp5);
-        details2.add(rapira);
-        Detail razgon = new Detail("razgon", 3, 1, 3, 3, 0,
-                "razgon", firstUp1, secondUp7, thirdUp);
-        details3.add(razgon);
-        details3.add(razgon);
-        Detail savracs = new Detail("savracs", 3, 2, 3, 3, 0,
-                "savracs", firstUp1, secondUp8, thirdUp);
-        details3.add(savracs);
-        Detail scepiami = new Detail("scepiami", 4, 1, 3, 3, 0,
-                "scepiami", firstUp1, secondUp3, thirdUp);
-        details4.add(scepiami);
-        Detail sinus = new Detail("sinus", 2, 2, 3, 3, 3,
-                "sinus", firstUp1, secondUp4, thirdUp6);
-        details2.add(sinus);
-        Detail sluhach = new Detail("sluhach", 3, 1, 3, 1, 0,
-                "sluhach", firstUp1, secondUp10, thirdUp);
-        details3.add(sluhach);
-        Detail spectr = new Detail("spectr", 2, 3, 3, 3, 3,
-                "spectr", firstUp1, secondUp4, thirdUp6);
-        details2.add(spectr);
-        Detail terzatel = new Detail("terzatel", 2, 3, 3, 2, 0,
-                "terzatel", firstUp1, secondUp11, thirdUp);
-        details2.add(terzatel);
-        Detail viverna = new Detail("viverna", 1, 1, 3, 3, 3,
-                "viverna", firstUp1, secondUp2, thirdUp2);
-        details1.add(viverna);
-        Detail zatochka = new Detail("zatochka", 4, 2, 3, 3, 0,
-                "zatochka", firstUp1, secondUp3, thirdUp);
-        details4.add(zatochka);
-        details4.add(zatochka);
-        detailList.add(details1);
-        detailList.add(details2);
-        detailList.add(details3);
-        detailList.add(details4);
-        cloneListAraay.addAll(detailList);
+        isUp = false;
         complete.setOnAction(event -> {
-            if (detail != null && focusFlag) {
-                getCodeUp();
-                writeToFile();
-            }
-            if (cloneListAraay.isEmpty()) {
-                cloneListAraay.addAll(detailList);
-                flag = true;
-            }
-            Collections.shuffle(cloneListAraay);
-            if (cloneAraay.isEmpty()) {
-                cloneAraay.addAll(cloneListAraay.get(0));
-                cloneListAraay.remove(0);
-                if (flag) {
-                    flag = false;
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Информация");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Новый круг");
-                    alert.showAndWait().ifPresent(rs -> {
-                        if (rs == ButtonType.OK) {
-                            System.out.println("Pressed OK.");
-                        }
-                    });
+            RadioButton selectedRadio = (RadioButton) Ups.getSelectedToggle();
+            if (!isUp) {
+                if (selectedRadio != null) {
+                    if (selectedRadio.getId().equals("Up")) {
+                        initUp();
+                        isUp = true;
+                    }
+                    if (selectedRadio.getId().equals("Reup")) {
+                        initReUp();
+                        isUp = true;
+                    }
                 }
+            } else {
+
+                if (detail != null && focusFlag) {
+                    getCodeUp();
+                    if (selectedRadio.getId().equals("Up")) {
+                        writeToFile(0);
+                    }
+                    if (selectedRadio.getId().equals("Reup")) {
+                        writeToFile(1);
+                    }
+                }
+                if (cloneListAraay.isEmpty()) {
+                    cloneListAraay.addAll(detailList);
+                    flag = true;
+                }
+                Collections.shuffle(cloneListAraay);
+                if (cloneAraay.isEmpty()) {
+                    cloneAraay.addAll(cloneListAraay.get(0));
+                    cloneListAraay.remove(0);
+                    if (flag) {
+                        flag = false;
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Информация");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Новый круг");
+                        alert.showAndWait().ifPresent(rs -> {
+                            if (rs == ButtonType.OK) {
+                                System.out.println("Pressed OK.");
+                            }
+                        });
+                    }
+                }
+                Collections.shuffle(cloneAraay);
+                detail = cloneAraay.get(0);
+                cloneAraay.remove(0);
+                Image.setImage(detail.getImage());
+                disableGrid();
+                focusFlag = false;
+                //ожидание потери фокуса
             }
-            Collections.shuffle(cloneAraay);
-            detail = cloneAraay.get(0);
-            cloneAraay.remove(0);
-            Image.setImage(detail.getImage());
-            disableGrid();
+        });
+        cansale.setOnAction(event -> {
             focusFlag = false;
-            //ожидание потери фокуса
         });
         focus.focusedProperty().addListener((obs, oldValue, newValue) -> {
             if (!newValue && check.isSelected()) {/* при потере */
@@ -312,25 +258,26 @@ public class Controller {
         }
     }
 
-    private void writeToFile() {
+    private void writeToFile(int type) {
+        String path = type == 0 ? "return/up/" : "return/reUp/";
         try {
-            writer = new FileWriter("result.txt", true);
-            writer.write(detail.toString());
+            writer = new FileWriter(path + "result.txt", true);
+            writer.write(detail.firstToString(type));
             writer.append('\n');
             writer.close();
             if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
-                writer = new FileWriter("result1.txt", true);
-                writer.write(detail.toString());
+                writer = new FileWriter(path + "result1.txt", true);
+                writer.write(detail.firstToString(type));
                 writer.append('\n');
                 writer.close();
             }
-            writer = new FileWriter("anotherResult.txt", true);
-            writer.write(detail.anotherString());
+            writer = new FileWriter(path + "anotherResult.txt", true);
+            writer.write(detail.anotherString(type));
             writer.append('\n');
             writer.close();
             if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
-                writer = new FileWriter("anotherResult1.txt", true);
-                writer.write(detail.anotherString());
+                writer = new FileWriter(path + "anotherResult1.txt", true);
+                writer.write(detail.anotherString(type));
                 writer.append('\n');
                 writer.close();
             }
@@ -421,4 +368,155 @@ public class Controller {
         ThirdGr_first.setDisable(false);
     }
 
+    public void initUp() {
+        List<String> thirdUp = Arrays.asList("", "", "", "");
+        List<String> firstUp1 = Arrays.asList("Прочность +10%", "Масса -17%", "Устойчивость ко всему урону +10%", "");
+        List<String> secondUp1 = Arrays.asList("Урон +5%", "Время перезарядки -9%", "", "");
+        List<String> thirdUp1 = Arrays.asList("Скорость поворота +10%", "Дальность стрельбы +15%", "Скорость сведения " +
+                "прицела +15%", "");
+        List<String> secondUp2 = Arrays.asList("Урон от самоничтожения +10%", "Радиус взрыва при уничтожении +10%",
+                "Задержка перед самоуничтожением -20%", "");
+        List<String> thirdUp2 = Arrays.asList("Мощность +20%", "Грузоподьемность кабины +10%", "Предельная масса +10%", "");
+        List<String> secondUp3 = Arrays.asList("Грузоподьемность +5%", "Штраф к мощносте меньше на 15%",
+                "Сцепление с поверхностью +25%", "");
+        List<String> secondUp4 = Arrays.asList("Урон +5%", "Время до перегрева +10%", "Скорость охлаждения +10%", "");
+        List<String> thirdUp3 = Arrays.asList("Разброс -17%", "Дальность стрельбы +15%", "Скорость поворота +10%", "");
+        List<String> secondUp5 = Arrays.asList("Урон +5%", "Радиус взрыва +10%", "Время перезарядки -9%", "");
+        List<String> secondUp6 = Arrays.asList("Урон +5%", "Радиус взрыва +10%", "Время до перегрева +10%", "");
+        List<String> thirdUp4 = Arrays.asList("Разброс -17%", "Скорость полета снарда + 25%",
+                "Скорость поворота +10%", "");
+        List<String> thirdUp5 = Arrays.asList("Увеличение разброса при выстреле ниже на 17%", "Отдача -20%",
+                "Скорость поворота +10%", "");
+        List<String> secondUp7 = Arrays.asList("Ускорение +10%", "Время до перегрева +10%", "Скорость охлаждения +10%",
+                "");
+        List<String> secondUp8 = Arrays.asList("Бонус к мощности +10%", "Предельная масса +3%", "Бонус к скорости +10%",
+                "");
+        List<String> secondUp9 = Arrays.asList("Урон +5%", "Время до перегрева", "Время до перегрева +10%", "");
+        List<String> thirdUp6 = Arrays.asList("Увеличение разброса при выстреле ниже 17%", "Дальность стрельбы +15%",
+                "Скорость сведения прицела +15%", "");
+        List<String> secondUp10 = Arrays.asList("Радиус обнаружения +15%", "", "", "");
+        List<String> secondUp11 = Arrays.asList("Контактный урон +5%", "Таранный урон +10%", "", "");
+        Detail blokchein = new Detail("blokchein", 2, 3, 3,
+                2, 3, "blokchein", firstUp1, secondUp1, thirdUp1);
+        details2.add(blokchein);
+        Detail dalnoboi = new Detail("dalnoboi", 1, 1, 3, 3,
+                3, "dalnoboi", firstUp1, secondUp2, thirdUp2);
+        details1.add(dalnoboi);
+        Detail goblin = new Detail("goblin", 2, 2, 3, 3, 3, "goblin");
+        Detail gonochnoe = new Detail("gonochnoe", 4, 1, 3,
+                3, 0, "gonochnoe", firstUp1, secondUp3, thirdUp);
+        details4.add(gonochnoe);
+        Detail grom = new Detail("grom", 2, 3, 3, 3,
+                3, "grom", firstUp1, secondUp4, thirdUp3);
+        details2.add(grom);
+        Detail guslia = new Detail("guslia", 4, 3, 3, 3,
+                0, "guslia", firstUp1, secondUp3, thirdUp);
+        details4.add(guslia);
+        Detail guslia1 = new Detail("guslia", 4, 3, 3, 3,
+                0, "guslia", firstUp1, secondUp3, thirdUp);
+        details4.add(guslia1);
+        Detail kyvalda = new Detail("kyvalda", 2, 1, 3, 3,
+                3, "kyvalda", firstUp1, secondUp4, thirdUp3);
+        details2.add(kyvalda);
+        Detail malish = new Detail("malish", 2, 1, 3, 3,
+                3, "malish", firstUp1, secondUp5, thirdUp4);
+        details2.add(malish);
+        Detail masiv = new Detail("masiv", 4, 2, 3, 3, 0,
+                "masiv", firstUp1, secondUp3, thirdUp);
+        details4.add(masiv);
+        details4.add(masiv);
+        Detail rapira = new Detail("rapira", 2, 1, 3, 3, 3,
+                "rapira", firstUp1, secondUp6, thirdUp5);
+        details2.add(rapira);
+        Detail razgon = new Detail("razgon", 3, 1, 3, 3, 0,
+                "razgon", firstUp1, secondUp7, thirdUp);
+        details3.add(razgon);
+        details3.add(razgon);
+        Detail savracs = new Detail("savracs", 3, 2, 3, 3, 0,
+                "savracs", firstUp1, secondUp8, thirdUp);
+        details3.add(savracs);
+        Detail scepiami = new Detail("scepiami", 4, 1, 3, 3, 0,
+                "scepiami", firstUp1, secondUp3, thirdUp);
+        details4.add(scepiami);
+        Detail sinus = new Detail("sinus", 2, 2, 3, 3, 3,
+                "sinus", firstUp1, secondUp4, thirdUp6);
+        details2.add(sinus);
+        Detail sluhach = new Detail("sluhach", 3, 1, 3, 1, 0,
+                "sluhach", firstUp1, secondUp10, thirdUp);
+        details3.add(sluhach);
+        Detail spectr = new Detail("spectr", 2, 3, 3, 3, 3,
+                "spectr", firstUp1, secondUp4, thirdUp6);
+        details2.add(spectr);
+        Detail terzatel = new Detail("terzatel", 2, 3, 3, 2, 0,
+                "terzatel", firstUp1, secondUp11, thirdUp);
+        details2.add(terzatel);
+        Detail viverna = new Detail("viverna", 1, 1, 3, 3, 3,
+                "viverna", firstUp1, secondUp2, thirdUp2);
+        details1.add(viverna);
+        Detail zatochka = new Detail("zatochka", 4, 2, 3, 3, 0,
+                "zatochka", firstUp1, secondUp3, thirdUp);
+        details4.add(zatochka);
+        details4.add(zatochka);
+        initList();
+    }
+
+    public void initList() {
+        detailList.add(details1);
+        detailList.add(details2);
+        detailList.add(details3);
+        detailList.add(details4);
+        cloneListAraay.addAll(detailList);
+    }
+
+    public void initReUp() {
+        List<String> thirdUp = Arrays.asList("", "", "", "");
+        List<String> firstUp1 = Arrays.asList("Прочность +10%", "Масса -17%", "Устойчивость ко всему урону +10%", "");
+        List<String> secondUp3 = Arrays.asList("Грузоподьемность +5%", "Штраф к мощносте меньше на 15%",
+                "Сцепление с поверхностью +25%", "");
+        List<String> secondUp5 = Arrays.asList("Урон +5%", "Радиус взрыва +10%", "Время перезарядки -9%", "");
+        List<String> thirdUp4 = Arrays.asList("Разброс -17%", "Скорость полета снарда + 25%",
+                "Скорость поворота +10%", "");
+        List<String> thirdUp6 = Arrays.asList("Увеличение разброса при выстреле ниже 17%", "Дальность стрельбы +15%",
+                "Скорость сведения прицела +15%", "");
+        List<String> secondUp4 = Arrays.asList("Урон +5%", "Время до перегрева +10%", "Скорость охлаждения +10%", "");
+        Detail bk = new Detail("Bk", 3, 3, 3, 3, 0,
+                "bk", firstUp1, Arrays.asList("Урон от взрыва модуля -25%", "Радиус взрыва модуля -25%",
+                "Эфективность модуля +56%", ""), thirdUp, 1, 3, 0);
+        details3.add(bk);
+        Detail gonochnoe = new Detail("gonochnoe", 4, 1, 3, 3,
+                0, "gonochnoe", firstUp1, secondUp3, thirdUp, 1, 2, 0);
+        details4.add(gonochnoe);
+        details4.add(gonochnoe);
+        Detail hover = new Detail("hover", 4, 3, 3,
+                3, 0, "hover", firstUp1,
+                Arrays.asList("Грузоподьемность +5%", "Штраф к мощносте меньше на 15%",
+                        "Ускорение эфективнее на 10%", ""), thirdUp, 2, 2, 0);
+        details4.add(hover);
+        details4.add(hover);
+        details4.add(hover);
+        details4.add(hover);
+        Detail ispolin = new Detail("ispolin", 3, 3, 3, 3, 0,
+                "ispolin", firstUp1, Arrays.asList("Бонус к мощности +10%", "Предельная масса +3%",
+                "Бонус к скорости +10%", ""), thirdUp, 2, 3, 0);
+        details3.add(ispolin);
+        Detail malish = new Detail("malish", 2, 1, 3, 3,
+                3, "malish", firstUp1, secondUp5, thirdUp4, 3, 3, 3);
+        details2.add(malish);
+        Detail malish1 = new Detail("malish", 2, 1, 3, 3,
+                3, "malish", firstUp1, secondUp5, thirdUp4, 2, 2, 1);
+        details2.add(malish1);
+        details2.add(malish1);
+        Detail nepra = new Detail("nepra", 3, 3, 3, 1, 0,
+                "nepra", firstUp1, Arrays.asList("Эффективность радиатора +42%", "",
+                "", ""), thirdUp, 3, 1, 0);
+        details3.add(nepra);
+        Detail sver4ek = new Detail("sver4ek", 2, 3, 3, 3, 3,
+                "sver4ek", firstUp1, secondUp5, Arrays.asList("Разброс -17%", "Скорость полета снаряда +25%",
+                "Боезопас +15%", ""), 3, 3, 1);
+        details2.add(sver4ek);
+        Detail vector = new Detail("vector", 2, 1, 3, 3, 3,
+                "vector", firstUp1, secondUp4, thirdUp6, 3, 1, 1);
+        details2.add(vector);
+        initList();
+    }
 }

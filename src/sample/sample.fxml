@@ -46,7 +46,6 @@
             </RadioButton>
             <RadioButton id="FirstGr_second" fx:id="FirstGr_second" layoutX="14.0" layoutY="68.0" mnemonicParsing="false" text="Второй пункт улучшения" toggleGroup="$FirstUp" />
             <RadioButton id="FirstGr_third" fx:id="FirstGr_third" layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="Третий пункт улучшения" toggleGroup="$FirstUp" />
-            <Text layoutX="47.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Апы предметов" />
             <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Первая группа" />
             <RadioButton id="SecondGr_first" fx:id="SecondGr_first" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" text="Первый пункт улучшения">
                <toggleGroup>
@@ -67,9 +66,16 @@
             <RadioButton id="ThirdGr_fourth" fx:id="ThirdGr_fourth" layoutX="14.0" layoutY="278.0" mnemonicParsing="false" text="Четвертый пункт улучшения" toggleGroup="$ThirdUp" />
             <RadioButton id="SecondGr_fourth" fx:id="SecondGr_fourth" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" text="Четвертый пункт улучшения" toggleGroup="$SecondUp" />
             <RadioButton id="FirstGr_fourth" fx:id="FirstGr_fourth" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" text="Четвертый пункт улучшения" toggleGroup="$FirstUp" />
-            <Button id="complete" fx:id="complete" layoutX="28.0" layoutY="378.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="149.0" text="Записать" />
-            <TextField fx:id="focus" layoutX="115.0" layoutY="320.0" prefHeight="25.0" prefWidth="77.0" />
-            <CheckBox fx:id="check" layoutX="28.0" layoutY="324.0" mnemonicParsing="false" text="Готов?" />
+            <Button id="complete" fx:id="complete" layoutX="85.0" layoutY="378.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="132.0" text="Записать" />
+            <TextField fx:id="focus" layoutX="85.0" layoutY="320.0" prefHeight="25.0" prefWidth="77.0" />
+            <CheckBox fx:id="check" layoutX="18.0" layoutY="324.0" mnemonicParsing="false" text="Готов?" />
+            <RadioButton fx:id="Up" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" text="UP">
+               <toggleGroup>
+                  <ToggleGroup fx:id="Ups" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Reup" layoutX="110.0" layoutY="14.0" mnemonicParsing="false" text="ReUp" toggleGroup="$Ups" />
+            <Button fx:id="cansale" layoutX="174.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="Отмена" />
          </children>
       </Pane>
    </children>
