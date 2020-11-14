@@ -212,6 +212,30 @@ public class Detail {
         return thirdUpName;
     }
 
+    public Integer getNumberUp1() {
+        return numberUp1;
+    }
+
+    public void setNumberUp1(Integer numberUp1) {
+        this.numberUp1 = numberUp1;
+    }
+
+    public Integer getNumberUp2() {
+        return numberUp2;
+    }
+
+    public void setNumberUp2(Integer numberUp2) {
+        this.numberUp2 = numberUp2;
+    }
+
+    public Integer getNumberUp3() {
+        return numberUp3;
+    }
+
+    public void setNumberUp3(Integer numberUp3) {
+        this.numberUp3 = numberUp3;
+    }
+
     public void setImage(String path) {
         File file = new File(path);
         try {

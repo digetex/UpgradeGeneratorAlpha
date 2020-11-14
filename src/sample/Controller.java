@@ -101,6 +101,7 @@ public class Controller {
 
     @FXML
     private Button cansale;
+
     @FXML
     void initReUp(ActionEvent event) {
         initArray();
@@ -115,7 +116,7 @@ public class Controller {
         isUp = true;
     }
 
-    private void initArray(){
+    private void initArray() {
         details1 = new ArrayList<>();
         details2 = new ArrayList<>();
         details3 = new ArrayList<>();
@@ -283,40 +284,52 @@ public class Controller {
     }
 
     private void writeToFile(int type) {
-        String path = type == 0 ? "return/up/" : "return/reUp/";
-        try {
-            writer = new FileWriter(path + "result.txt", true);
-            writer.write(detail.firstToString(type));
-            writer.append('\n');
-            writer.close();
-            if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
-                writer = new FileWriter(path + "result1.txt", true);
-                writer.write(detail.firstToString(type));
-                writer.append('\n');
-                writer.close();
-            }
-            writer = new FileWriter(path + "anotherResult.txt", true);
-            writer.write(detail.anotherString(type));
-            writer.append('\n');
-            writer.close();
-            if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
-                writer = new FileWriter(path + "anotherResult1.txt", true);
-                writer.write(detail.anotherString(type));
-                writer.append('\n');
-                writer.close();
-            }
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Информация");
+        if (detail.getFirstUp() == detail.getNumberUp1() && detail.getSecondUp() == detail.getNumberUp2() &&
+                detail.getNumberUp3() == detail.getThirdUp()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("АХТУНГ");
             alert.setHeaderText(null);
-            alert.setContentText("Ошибка записи");
+            alert.setContentText("АПЫ СОВПАЛИ");
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
                     System.out.println("Pressed OK.");
                 }
             });
+        } else {
+            String path = type == 0 ? "return/up/" : "return/reUp/";
+            try {
+                writer = new FileWriter(path + "result.txt", true);
+                writer.write(detail.firstToString(type));
+                writer.append('\n');
+                writer.close();
+                if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
+                    writer = new FileWriter(path + "result1.txt", true);
+                    writer.write(detail.firstToString(type));
+                    writer.append('\n');
+                    writer.close();
+                }
+                writer = new FileWriter(path + "anotherResult.txt", true);
+                writer.write(detail.anotherString(type));
+                writer.append('\n');
+                writer.close();
+                if (detail.getMilisecond() > 150 && detail.getMilisecond() < 850) {
+                    writer = new FileWriter(path + "anotherResult1.txt", true);
+                    writer.write(detail.anotherString(type));
+                    writer.append('\n');
+                    writer.close();
+                }
+            } catch (IOException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Информация");
+                alert.setHeaderText(null);
+                alert.setContentText("Ошибка записи");
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK) {
+                        System.out.println("Pressed OK.");
+                    }
+                });
+            }
         }
-
     }
 
     private void disableGrid() {
