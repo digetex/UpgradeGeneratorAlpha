@@ -69,12 +69,12 @@
             <Button id="complete" fx:id="complete" layoutX="85.0" layoutY="378.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="132.0" text="Записать" />
             <TextField fx:id="focus" layoutX="85.0" layoutY="320.0" prefHeight="25.0" prefWidth="77.0" />
             <CheckBox fx:id="check" layoutX="18.0" layoutY="324.0" mnemonicParsing="false" text="Готов?" />
-            <RadioButton fx:id="Up" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" text="UP">
+            <RadioButton fx:id="Up" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" onAction="#initUp" text="UP">
                <toggleGroup>
                   <ToggleGroup fx:id="Ups" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="Reup" layoutX="110.0" layoutY="14.0" mnemonicParsing="false" text="ReUp" toggleGroup="$Ups" />
+            <RadioButton fx:id="Reup" layoutX="110.0" layoutY="14.0" mnemonicParsing="false" onAction="#initReUp" text="ReUp" toggleGroup="$Ups" />
             <Button fx:id="cansale" layoutX="174.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="Отмена" />
          </children>
       </Pane>

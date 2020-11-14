@@ -1,6 +1,7 @@
 package sample;
 
 import entity.Detail;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -100,7 +101,31 @@ public class Controller {
 
     @FXML
     private Button cansale;
+    @FXML
+    void initReUp(ActionEvent event) {
+        initArray();
+        initReUp();
+        isUp = true;
+    }
 
+    @FXML
+    void initUp(ActionEvent event) {
+        initArray();
+        initUp();
+        isUp = true;
+    }
+
+    private void initArray(){
+        details1 = new ArrayList<>();
+        details2 = new ArrayList<>();
+        details3 = new ArrayList<>();
+        details4 = new ArrayList<>();
+        detailList = new ArrayList<>();
+        cloneAraay = new ArrayList<>();
+        cloneListAraay = new ArrayList<>();
+        flag = false;
+        focusFlag = false;
+    }
 
     @FXML
     void initialize() {
@@ -108,16 +133,15 @@ public class Controller {
         complete.setOnAction(event -> {
             RadioButton selectedRadio = (RadioButton) Ups.getSelectedToggle();
             if (!isUp) {
-                if (selectedRadio != null) {
-                    if (selectedRadio.getId().equals("Up")) {
-                        initUp();
-                        isUp = true;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Ошибка");
+                alert.setHeaderText(null);
+                alert.setContentText("Выберите тип");
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK) {
+                        System.out.println("Pressed OK.");
                     }
-                    if (selectedRadio.getId().equals("Reup")) {
-                        initReUp();
-                        isUp = true;
-                    }
-                }
+                });
             } else {
 
                 if (detail != null && focusFlag) {
@@ -485,8 +509,6 @@ public class Controller {
         details3.add(bk);
         Detail gonochnoe = new Detail("gono4noe", 4, 1, 3, 3,
                 0, "gono4noe", firstUp1, secondUp3, thirdUp, 1, 2, 0);
-        details4.add(gonochnoe);
-        details4.add(gonochnoe);
         Detail hover = new Detail("hover", 4, 3, 3,
                 3, 0, "hover", firstUp1,
                 Arrays.asList("Грузоподьемность +5%", "Штраф к мощносте меньше на 15%",
@@ -507,7 +529,6 @@ public class Controller {
         Detail nepra = new Detail("nepra", 3, 3, 3, 1, 0,
                 "nepra", firstUp1, Arrays.asList("Эффективность радиатора +42%", "",
                 "", ""), thirdUp, 3, 1, 0);
-        details3.add(nepra);
         Detail sver4ek = new Detail("sver4ek", 2, 3, 3, 3, 3,
                 "sver4ek", firstUp1, secondUp5, Arrays.asList("Разброс -17%", "Скорость полета снаряда +25%",
                 "Боезопас +15%", ""), 3, 3, 1);
