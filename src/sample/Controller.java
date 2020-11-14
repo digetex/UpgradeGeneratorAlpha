@@ -285,7 +285,7 @@ public class Controller {
 
     private void writeToFile(int type) {
         if (detail.getFirstUp() == detail.getNumberUp1() && detail.getSecondUp() == detail.getNumberUp2() &&
-                detail.getNumberUp3() == detail.getThirdUp()) {
+                (detail.getNumberUp3() == detail.getThirdUp()|| detail.getThirdUp() == 0))  {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("АХТУНГ");
             alert.setHeaderText(null);
@@ -525,7 +525,7 @@ public class Controller {
         Detail hover = new Detail("hover", 4, 3, 3,
                 3, 0, "hover", firstUp1,
                 Arrays.asList("Грузоподьемность +5%", "Штраф к мощносте меньше на 15%",
-                        "Ускорение эфективнее на 10%", ""), thirdUp, 2, 2, 0);
+                        "Ускорение эфективнее на 10%", ""), thirdUp, 2, 1, 0);
         details4.add(hover);
         details4.add(hover);
         details4.add(hover);
